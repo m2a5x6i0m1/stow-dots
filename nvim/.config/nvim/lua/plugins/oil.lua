@@ -56,10 +56,10 @@ return {
 					hint = "DiagnosticHint",
 				},
 				diagnostic_symbols = {
-					error = "",
-					warn = "",
-					info = "",
-					hint = "󰌶",
+					error = " ",
+					warn = " ",
+					hint = "󰠠 ",
+					info = " ",
 				},
 			})
 		end,
