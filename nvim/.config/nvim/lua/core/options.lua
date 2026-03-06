@@ -37,7 +37,7 @@ vim.opt.splitbelow = true
 
 -- Better diagnostic
 vim.diagnostic.config({
-	virtual_lines = {
+	virtual_text = {
 		source = true,
 		current_line = true,
 		underline = true,
