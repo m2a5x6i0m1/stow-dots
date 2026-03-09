@@ -21,6 +21,8 @@ Vpn
 api
 artix
 btw
+dendritic
+firefox
 frontmatter
 iso
 linux
