@@ -15,7 +15,7 @@ hide_search=false
 no_actions=true
 
 allow_markup=true
-allow_images=true
+allow_images=false
 image_size=29
 
 key_up=k
