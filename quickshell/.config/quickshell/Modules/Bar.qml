@@ -1,6 +1,4 @@
 import Quickshell
-import Quickshell.Wayland
-import Quickshell.Io
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
@@ -35,19 +33,17 @@ ShellRoot {
                 right: true
             }
 
-            implicitHeight: 30
+            implicitHeight: 25
             color: "transparent"
 
             margins {
-                top: 1
-                left: 3
-                right: 3
+                bottom: 1
             }
 
             Rectangle {
                 anchors.fill: parent
                 color: root.colBg
-                radius: 5
+                radius: 0
 
                 RowLayout {
                     anchors.fill: parent
