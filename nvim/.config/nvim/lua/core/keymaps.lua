@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 
 vim.keymap.set({ "n", "v" }, "x", '"_x')
-vim.keymap.set("n", "<leader>nh", ":noh<CR>", { desc = "Remove highlights" })
+vim.keymap.set("n", "<leader>nh", "<cmd>noh<CR>", { desc = "Remove highlights" })
+vim.keymap.set("n", "ZZ", "<cmd>noautocmd wq<CR>", { desc = "Save & Quit without formatting" })
 
 -- shortcuts
 vim.keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
