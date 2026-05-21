@@ -18,6 +18,7 @@ Netrun
 Niri
 OS
 Preem
+Qml
 Quickfix
 Quickhack
 Quickshell
