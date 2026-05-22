@@ -3,6 +3,7 @@ Autologin
 Autoloot
 CKAN
 Cli
+Colorscheme
 Delamain
 EFI
 Externalism
