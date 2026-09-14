@@ -45,6 +45,12 @@ return {
 				cycle = true,
 				preset = "ivy_split",
 			},
+			matcher = {
+				-- These might have performance impact so they're not enabled by default
+				history_bonus = true,
+				cwd_bonus = true,
+				frecency = true,
+			},
 			formatters = {
 				file = { icon_width = 3 },
 			},

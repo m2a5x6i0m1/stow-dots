@@ -13,6 +13,7 @@ return {
 		heading = {
 			border = true,
 			position = "inline",
+			above = "",
 		},
 		code = {
 			border = "thin",

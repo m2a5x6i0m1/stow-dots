@@ -20,5 +20,8 @@ window-padding-balance = true
 window-padding-color = extend
 scrollbar = never
 
+background-opacity = 0.86
+background-blur = true
+
 # custom-shader = ./cursor-trail.glsl
 # custom-shader = ./cursor-smear.glsl
