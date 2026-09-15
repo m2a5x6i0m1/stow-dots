@@ -83,6 +83,7 @@ devbox
 devenv
 difftastic
 direnv
+disko
 dmenu
 dns
 docker

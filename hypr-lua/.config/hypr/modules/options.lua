@@ -23,7 +23,7 @@ hl.config({
 		dim_strength = 0.12,
 
 		shadow = { enabled = false },
-		blur = { enabled = false },
+		blur = { enabled = true },
 	},
 
 	animations = { enabled = false },

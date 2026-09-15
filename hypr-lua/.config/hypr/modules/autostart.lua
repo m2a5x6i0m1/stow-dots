@@ -1,5 +1,6 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 hl.on("hyprland.start", function()
+	hl.exec_cmd("uwsm app -- hypridle")
 	hl.exec_cmd("uwsm app -- hyprsunset -t 3000")
 	hl.exec_cmd("uwsm app -- awww-daemon && awww restore")
 	hl.exec_cmd("uwsm app -- qs")
