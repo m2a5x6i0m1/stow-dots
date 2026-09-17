@@ -22,7 +22,7 @@ compinit -C
 # ---------------------
 
 # ---- Completion plugins ----
-# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls $realpath'
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -a --icons=always --color=always --group-directories-first $realpath'
 # zinit light Aloxaf/fzf-tab # must be invoked after compinit
 # zinit light Freed-Wu/fzf-tab-source
 # ----------------------------
@@ -58,7 +58,7 @@ setopt hist_verify
 setopt hist_lex_words
 # -----------------
 
-# ---- keybindings ---- #  TODO: switch to vim one
+# ---- keybindings ---- #
 bindkey -e
 
 autoload -Uz history-search-end
@@ -88,6 +88,7 @@ alias l='eza -l --git --icons=auto --color=auto --group-directories-first'
 alias rebuild='sudo nixos-rebuild switch --flake ~/nixos-dots'
 alias clean='sudo nix-collect-garbage -d; sudo nixos-rebuild switch --flake ~/nixos-dots'
 alias nv='nvim'
+alias v='nvim'
 alias lg='lazygit'
 alias t='tmux'
 alias g='git'
