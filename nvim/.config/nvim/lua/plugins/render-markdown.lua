@@ -7,12 +7,17 @@ return {
 	},
 	opts = {
 		render_modes = true,
-		completions = {
-			lsp = { enabled = true },
+		completions = { lsp = { enabled = true } },
+		anti_conceal = {
+			ignore = {
+				head_background = true,
+				head_border = true,
+			},
 		},
 		heading = {
 			border = true,
 			position = "inline",
+			above = "",
 		},
 		code = {
 			border = "thin",

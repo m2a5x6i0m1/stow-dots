@@ -4,7 +4,8 @@ return {
 	config = function()
 		require("obsidian").setup({
 			frontmatter = {
-				enabled = false, -- TODO: Fix it
+				enabled = false,
+				func = require("obsidian.builtin").frontmatter,
 			},
 
 			picker = {
@@ -23,7 +24,7 @@ return {
 			workspaces = {
 				{
 					name = "personal",
-					path = "~/vault",
+					path = "~/notes",
 				},
 			},
 
@@ -42,6 +43,23 @@ return {
 			end,
 		})
 
+		-- Folding based on obsidian.nvim obsidian-ls implementation
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = function(ev)
+				local client = vim.lsp.get_client_by_id(ev.data.client_id)
+				if not (client and client.name == "obsidian-ls") then
+					return
+				end
+
+				for _, win in ipairs(vim.fn.win_findbuf(ev.buf)) do
+					vim.wo[win][0].foldlevel = 99
+					vim.wo[win][0].foldmethod = "expr"
+					vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+					vim.wo[win][0].foldtext = "v:lua.vim.lsp.foldtext()"
+				end
+			end,
+		})
+
 		-- My personal preference
 		vim.keymap.set("n", "<leader>nn", "<cmd>Obsidian new<cr>", { desc = "New" })
 		vim.keymap.set("n", "<leader>nN", "<cmd>Obsidian new_from_template<cr>", { desc = "New from template" })
@@ -52,6 +70,6 @@ return {
 		vim.keymap.set("n", "<leader>nr", "<cmd>Obsidian rename<cr>", { desc = "Rename note" })
 
     -- stylua: ignore
-		vim.keymap.set("n", "<leader>nf", function()Snacks.picker.files({ cwd = "~/vault" })end, { desc = "Find" })
+		vim.keymap.set("n", "<leader>nf", function()Snacks.picker.files({ cwd = "~/notes" })end, { desc = "Find" })
 	end,
 }

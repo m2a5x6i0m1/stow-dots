@@ -32,6 +32,7 @@ return {
 			"regex",
 			"vim",
 			"vimdoc",
+			"yaml",
 		})
 	end,
 }

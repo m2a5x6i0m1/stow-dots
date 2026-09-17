@@ -45,6 +45,12 @@ return {
 				cycle = true,
 				preset = "ivy_split",
 			},
+			matcher = {
+				-- These might have performance impact so they're not enabled by default
+				history_bonus = true,
+				cwd_bonus = true,
+				frecency = true,
+			},
 			formatters = {
 				file = { icon_width = 3 },
 			},
@@ -93,7 +99,7 @@ return {
 		-- find
 		{"<leader>ff", function() Snacks.picker.files() end, desc = "Files",},
 		{"<leader>fd", function() Snacks.picker.files({ cwd = "~/stow-dots", hidden = true }) end, desc = "Dotfiles",},
-		{"<leader>fn", function() Snacks.picker.files({ cwd = "~/vault"}) end, desc = "Notes",},
+		{"<leader>fn", function() Snacks.picker.files({ cwd = "~/notes"}) end, desc = "Notes",},
 		{"<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Config Files",},
 		{"<leader>fr", function() Snacks.picker.recent() end, desc = "Recent",},
 		{"<leader>fh", function() Snacks.picker.help() end, desc = "Help Pages",},

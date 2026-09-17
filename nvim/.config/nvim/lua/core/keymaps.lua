@@ -6,9 +6,9 @@ vim.keymap.set("n", "ZZ", "<cmd>noautocmd wq<CR>", { desc = "Save & Quit without
 
 -- shortcuts
 vim.keymap.set("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
-vim.keymap.set("n", "<leader>lc", "<cmd>Oil ~/.config/nvim/<CR>", { desc = "Open Neovim Config" })
+vim.keymap.set("n", "<leader>lc", "<cmd>Oil ~/.config/nvim/lua/plugins/<CR>", { desc = "Open Neovim Config" })
 vim.keymap.set("n", "<leader>ln", "<cmd>Oil ~/nixos-dots/<CR>", { desc = "Open NixOS Config" })
-vim.keymap.set("n", "<leader>lv", "<cmd>Oil ~/vault/<CR>", { desc = "Open notes vault" })
+vim.keymap.set("n", "<leader>lv", "<cmd>Oil ~/notes/<CR>", { desc = "Open notes vault" })
 
 -- window navigation
 vim.keymap.set("n", "<M-h>", "<C-w>h")
