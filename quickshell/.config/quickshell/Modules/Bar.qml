@@ -7,15 +7,15 @@ Scope {
   id: root
 
   // Theme colors
-  property color colBg: "#1a1b26"
-  property color colFg: "#a9b1d6"
-  property color colCyan: "#0db9d7"
-  property color colPurple: "#ad8ee6"
-  property color colMuted: "#444b6a"
+  readonly property color colBg: "#1a1b26"
+  readonly property color colFg: "#a9b1d6"
+  readonly property color colCyan: "#0db9d7"
+  readonly property color colPurple: "#ad8ee6"
+  readonly property color colMuted: "#444b6a"
 
   // Font
-  property string fontFamily: "JetBrainsMono Nerd Font"
-  property int fontSize: 14
+  readonly property string fontFamily: "JetBrainsMono Nerd Font"
+  readonly property int fontSize: 14
 
   Variants {
     model: Quickshell.screens
