@@ -2,16 +2,10 @@ import Quickshell
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
+import qs.Modules
 
 Scope {
   id: root
-
-  // Theme colors
-  readonly property color colBg: "#1a1b26"
-  readonly property color colFg: "#a9b1d6"
-  readonly property color colCyan: "#0db9d7"
-  readonly property color colPurple: "#ad8ee6"
-  readonly property color colMuted: "#444b6a"
 
   // Font
   readonly property string fontFamily: "JetBrainsMono Nerd Font"
@@ -42,7 +36,7 @@ Scope {
 
       Rectangle {
         anchors.fill: parent
-        color: root.colBg
+        color: Colors.bg
         radius: 4
 
         RowLayout {
@@ -67,7 +61,7 @@ Scope {
 
               Text {
                 text: index + 1
-                color: parent.isActive ? root.colCyan : (parent.hasWindows ? root.colCyan : root.colMuted)
+                color: parent.isActive ? Colors.cyan : (parent.hasWindows ? Colors.cyan : Colors.muted)
                 font.pixelSize: root.fontSize
                 font.family: root.fontFamily
                 font.bold: true
@@ -77,7 +71,7 @@ Scope {
               Rectangle {
                 width: 20
                 height: 2
-                color: parent.isActive ? root.colPurple : root.colBg
+                color: parent.isActive ? Colors.purple : Colors.bg
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
               }
@@ -96,7 +90,7 @@ Scope {
           Text {
             id: clockText
             text: Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
-            color: root.colCyan
+            color: Colors.cyan
             font.pixelSize: root.fontSize
             font.family: root.fontFamily
             font.bold: true
