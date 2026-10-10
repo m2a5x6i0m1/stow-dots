@@ -4,10 +4,12 @@ import qs.Modules
 
 Text {
   id: clockText
+  required property string fontFamily
+  required property int fontSize
   text: Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
   color: Colors.cyan
-  font.pixelSize: root.fontSize
-  font.family: root.fontFamily
+  font.pixelSize: fontSize
+  font.family: fontFamily
   font.bold: true
   Layout.rightMargin: 6
 
