@@ -46,13 +46,19 @@ Scope {
             Layout.rightMargin: 5
           }
 
-          WorkspacesWidget {}
+          WorkspacesWidget {
+            fontFamily: root.fontFamily
+            fontSize: root.fontSize
+          }
 
           Item {
             Layout.fillWidth: true
           }
 
-          ClockWidget {}
+          ClockWidget {
+            fontFamily: root.fontFamily
+            fontSize: root.fontSize
+          }
 
           Item {
             Layout.rightMargin: 5

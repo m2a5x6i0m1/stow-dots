@@ -4,7 +4,10 @@ import QtQuick.Layouts
 import qs.Modules
 
 Repeater {
+  id: root
   model: 10
+  required property int fontSize
+  required property string fontFamily
 
   Rectangle {
     Layout.preferredWidth: 20
