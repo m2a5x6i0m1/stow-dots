@@ -47,62 +47,13 @@ Scope {
             Layout.rightMargin: 5
           }
 
-          Repeater {
-            model: 10
-
-            Rectangle {
-              Layout.preferredWidth: 20
-              Layout.preferredHeight: parent.height
-              color: "transparent"
-
-              property var workspace: Hyprland.workspaces.values.find(ws => ws.id === index + 1) ?? null
-              property bool isActive: Hyprland.focusedWorkspace?.id === (index + 1)
-              property bool hasWindows: workspace !== null
-
-              Text {
-                text: index + 1
-                color: parent.isActive ? Colors.cyan : (parent.hasWindows ? Colors.cyan : Colors.muted)
-                font.pixelSize: root.fontSize
-                font.family: root.fontFamily
-                font.bold: true
-                anchors.centerIn: parent
-              }
-
-              Rectangle {
-                width: 20
-                height: 2
-                color: parent.isActive ? Colors.purple : Colors.bg
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.bottom: parent.bottom
-              }
-
-              MouseArea {
-                anchors.fill: parent
-                onClicked: Hyprland.usingLua ? Hyprland.dispatch("hl.dsp.focus({ workspace = " + (index + 1) + "})") : Hyprland.dispatch("workspace " + (index + 1))
-              }
-            }
-          }
+          WorkspacesWidget {}
 
           Item {
             Layout.fillWidth: true
           }
 
-          Text {
-            id: clockText
-            text: Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
-            color: Colors.cyan
-            font.pixelSize: root.fontSize
-            font.family: root.fontFamily
-            font.bold: true
-            Layout.rightMargin: 6
-
-            Timer {
-              interval: 1000
-              running: true
-              repeat: true
-              onTriggered: clockText.text = Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
-            }
-          }
+          ClockWidget {}
 
           Item {
             Layout.rightMargin: 5
