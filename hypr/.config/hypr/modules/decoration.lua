@@ -20,7 +20,7 @@ hl.config({
 		shadow = { enabled = false },
 
 		blur = {
-			enabled = true,
+			enabled = false,
 			passes = 1,
 			size = 3,
 			brightness = 0.8,

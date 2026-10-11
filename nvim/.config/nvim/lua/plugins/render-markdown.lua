@@ -17,9 +17,10 @@ return {
 		heading = {
 			border = true,
 			position = "inline",
+			icons = {},
 			above = "",
 		},
-		code = { border = "thin" },
+		code = { border = "thick" },
 		sign = { enabled = false },
 		yaml = { enabled = false },
 	},

@@ -17,7 +17,7 @@ local binds_table = {
 	{ "P", "cliphist list | wofi --dmenu | cliphist decode | wl-copy" },
 
 	{ "RETURN", "uwsm app -- ghostty" },
-	{ "F", "uwsm app -- firefox" },
+	{ "F", "uwsm app -- firefox-esr" },
 }
 
 local applyBinds = function(binds)

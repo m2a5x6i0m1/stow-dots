@@ -20,7 +20,7 @@ window-padding-balance = true
 window-padding-color = extend
 scrollbar = never
 
-background-opacity = 0.9
-background-blur = true
+# background-opacity = 0.9
+# background-blur = true
 
 # custom-shader = ./cursor-warp.glsl

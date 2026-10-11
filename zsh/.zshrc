@@ -104,6 +104,7 @@ alias lg='lazygit'
 alias v='nvim'
 alias t='tmux'
 alias k='kubectl'
+alias tf='terraform'
 alias g='git'
 # -----------------
 
