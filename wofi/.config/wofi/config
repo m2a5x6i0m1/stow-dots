@@ -10,9 +10,10 @@ show=drun
 prompt=Search
 filter_rate=100
 insensitive=true
+match=fuzzy
+no_actions=true
 hide_scroll=true
 hide_search=false
-no_actions=true
 
 allow_markup=true
 allow_images=false

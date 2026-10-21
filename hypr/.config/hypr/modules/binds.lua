@@ -14,7 +14,7 @@ local binds_table = {
 	{ "U", hl.dsp.window.fullscreen() },
 	{ "I", hl.dsp.window.float() },
 	{ "O", "wofi --show drun" },
-	{ "P", "cliphist list | wofi --dmenu | cliphist decode | wl-copy" },
+	{ "P", "cliphist list | wofi --dmenu -k $XDG_CACHE_HOME/wofi-cliphist | cliphist decode | wl-copy" },
 
 	{ "RETURN", "uwsm app -- ghostty" },
 	{ "F", "uwsm app -- firefox-esr" },
