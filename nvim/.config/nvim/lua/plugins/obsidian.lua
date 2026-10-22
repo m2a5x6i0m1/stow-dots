@@ -40,6 +40,10 @@ return {
 				folder = "templates",
 			},
 
+			link = {
+				auto_update = true,
+			},
+
 			backlinks = {
 				parse_headers = false,
 			},
