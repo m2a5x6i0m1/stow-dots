@@ -21,7 +21,9 @@ return {
 					}
 					if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
 						for k, v in pairs(note.metadata) do
-							out[k] = v
+							if v ~= note.aliases then
+								out[k] = v
+							end
 						end
 					end
 					return out
