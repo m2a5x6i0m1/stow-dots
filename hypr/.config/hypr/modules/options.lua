@@ -7,7 +7,7 @@ hl.config({
 	},
 
 	misc = {
-		disable_autoreload = true,
+		disable_autoreload = false,
 		disable_splash_rendering = true,
 		disable_xdg_env_checks = true,
 		key_press_enables_dpms = true,
