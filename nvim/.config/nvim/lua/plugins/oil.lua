@@ -24,7 +24,13 @@ return {
 			watch_for_changes = true,
 
 			columns = { "icon" },
-			view_options = { show_hidden = true },
+			view_options = {
+				show_hidden = true,
+				is_always_hidden = function(name, bufnr)
+					local m = name:match("^%.%.")
+					return m ~= nil
+				end,
+			},
 			win_options = { signcolumn = "yes" },
 		})
 		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
