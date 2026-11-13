@@ -85,6 +85,7 @@ cli
 colorscheme
 comms
 cpu
+css
 csv
 curlie
 cursorline
@@ -224,6 +225,7 @@ sddm
 secretspec
 serpl
 sesh
+sideberry
 smth
 spaceplane
 stdout

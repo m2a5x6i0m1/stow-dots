@@ -1,3 +1,5 @@
+ # TODO: Better vim mode pugin
+
 # ---- ZINIT ----
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
@@ -59,7 +61,7 @@ setopt hist_lex_words
 # -----------------
 
 # ---- keybindings ---- #
-bindkey -e # TODO: Better vim mode
+bindkey -v
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
