@@ -1,7 +1,3 @@
-hl.config({
-	animations = { enabled = true },
-})
-
 local curves = {
 	-- Overshoot
 	{ "heavyOvershoot", { type = "bezier", points = { { 0.53, 0.51 }, { 0.4, 1.22 } } } },

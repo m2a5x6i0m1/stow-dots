@@ -1,22 +1,19 @@
 local main_mod = "SUPER"
 
 local binds_table = {
-	{ "code:60", hl.dsp.focus({ workspace = "e+1" }) },
-	{ "code:59", hl.dsp.focus({ workspace = "e-1" }) },
+	{ "ESCAPE", hl.dsp.window.close() },
+	{ "U", hl.dsp.window.fullscreen() },
+	{ "I", hl.dsp.window.float() },
 
 	{ "h", hl.dsp.focus({ direction = "left" }) },
 	{ "j", hl.dsp.focus({ direction = "down" }) },
 	{ "k", hl.dsp.focus({ direction = "up" }) },
 	{ "l", hl.dsp.focus({ direction = "right" }) },
 
-	{ "ESCAPE", hl.dsp.window.close() },
-
-	{ "U", hl.dsp.window.fullscreen() },
-	{ "I", hl.dsp.window.float() },
-	{ "O", "wofi --show drun" },
-	{ "P", "cliphist list | wofi --dmenu -k $XDG_CACHE_HOME/wofi-cliphist | cliphist decode | wl-copy" },
-
 	{ "RETURN", "uwsm app -- ghostty" },
+	{ "SHIFT + BACKSPACE", "~/.config/hypr/_refactor/scripts/power-menu.sh" },
+	{ "P", "cliphist list | wofi --dmenu -k $XDG_CACHE_HOME/wofi-cliphist | cliphist decode | wl-copy" },
+	{ "O", "wofi --show drun" },
 	{ "F", "uwsm app -- firefox" },
 }
 
@@ -31,9 +28,6 @@ local applyBinds = function(binds)
 end
 
 applyBinds(binds_table)
-
--- Power Menu
-hl.bind(main_mod .. " + SHIFT + BACKSPACE", hl.dsp.exec_cmd("~/.config/hypr/_refactor/scripts/power-menu.sh"))
 
 -- Move/resize windows with main_mod + LMB/RMB and dragging
 hl.bind(main_mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
