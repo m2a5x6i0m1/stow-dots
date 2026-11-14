@@ -10,6 +10,8 @@ hl.config({
 		},
 	},
 
+	animations = { enabled = true },
+
 	decoration = {
 		rounding = 4,
 		rounding_power = 2,
