@@ -3,13 +3,10 @@ return {
 	event = "VeryLazy",
 	config = function()
 		require("obsidian").setup({
-			-- note_id_func = require("obsidian.builtin").zettel_id,
-			--
-			-- note_path_func = function(spec)
-			-- 	-- This is equivalent to the default behavior.
-			-- 	local path = spec.dir / tostring(spec.id)
-			-- 	return path:with_suffix(".md", true)
-			-- end,
+
+			note_id_func = function(title)
+				return title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+			end,
 
 			frontmatter = {
 				enabled = true,
@@ -21,7 +18,7 @@ return {
 					}
 					if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
 						for k, v in pairs(note.metadata) do
-							if v ~= note.aliases then
+							if v ~= note.aliases and v ~= note.id then
 								out[k] = v
 							end
 						end
