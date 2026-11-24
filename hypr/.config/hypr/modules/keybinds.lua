@@ -1,30 +1,30 @@
 local main_mod = "SUPER"
 
 local binds_table = {
-	{ "ESCAPE", hl.dsp.window.close() },
-	{ "U", hl.dsp.window.fullscreen() },
-	{ "I", hl.dsp.window.float() },
+  { "ESCAPE", hl.dsp.window.close() },
+  { "U", hl.dsp.window.fullscreen() },
+  { "I", hl.dsp.window.float() },
 
-	{ "h", hl.dsp.focus({ direction = "left" }) },
-	{ "j", hl.dsp.focus({ direction = "down" }) },
-	{ "k", hl.dsp.focus({ direction = "up" }) },
-	{ "l", hl.dsp.focus({ direction = "right" }) },
+  { "h", hl.dsp.focus({ direction = "left" }) },
+  { "j", hl.dsp.focus({ direction = "down" }) },
+  { "k", hl.dsp.focus({ direction = "up" }) },
+  { "l", hl.dsp.focus({ direction = "right" }) },
 
-	{ "RETURN", "uwsm app -- ghostty" },
-	{ "SHIFT + BACKSPACE", "~/.config/hypr/_refactor/scripts/power-menu.sh" },
-	{ "P", "cliphist list | wofi --dmenu -k $XDG_CACHE_HOME/wofi-cliphist | cliphist decode | wl-copy" },
-	{ "O", "wofi --show drun" },
-	{ "F", "uwsm app -- firefox" },
+  { "RETURN", "uwsm app -- ghostty" },
+  { "SHIFT + BACKSPACE", "~/.config/hypr/_refactor/scripts/power-menu.sh" },
+  { "P", "cliphist list | wofi --dmenu -k $XDG_CACHE_HOME/wofi-cliphist | cliphist decode | wl-copy" },
+  { "O", "wofi --show drun" },
+  { "F", "uwsm app -- firefox" },
 }
 
 local applyBinds = function(binds)
-	for _, bind in ipairs(binds) do
-		if type(bind[2]) == "string" then
-			hl.bind(main_mod .. " + " .. bind[1], hl.dsp.exec_cmd(bind[2]))
-		elseif type(bind[2]) == "userdata" then
-			hl.bind(main_mod .. " + " .. bind[1], bind[2])
-		end
-	end
+  for _, bind in ipairs(binds) do
+    if type(bind[2]) == "string" then
+      hl.bind(main_mod .. " + " .. bind[1], hl.dsp.exec_cmd(bind[2]))
+    elseif type(bind[2]) == "userdata" then
+      hl.bind(main_mod .. " + " .. bind[1], bind[2])
+    end
+  end
 end
 
 applyBinds(binds_table)
@@ -36,9 +36,9 @@ hl.bind(main_mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 -- Switch workspaces with main_mod + [0-9]
 -- Move active window to a workspace with main_mod + SHIFT + [0-9]
 for i = 1, 10 do
-	local key = i % 10 -- 10 maps to key 0
-	hl.bind(main_mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(main_mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
+  local key = i % 10 -- 10 maps to key 0
+  hl.bind(main_mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+  hl.bind(main_mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
 -- Laptop multimedia keys for volume and LCD brightness

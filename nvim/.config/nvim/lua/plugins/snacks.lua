@@ -1,64 +1,64 @@
 return {
-	"folke/snacks.nvim",
-	lazy = false,
-	priority = 1000,
-	opts = {
-		image = { enabled = false, formats = {} },
+  "folke/snacks.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    image = { enabled = false, formats = {} },
 
-		quickfile = { enabled = true },
-		bigfile = { enabled = true },
-		terminal = { enabled = true },
-		input = { enabled = true },
+    quickfile = { enabled = true },
+    bigfile = { enabled = true },
+    terminal = { enabled = true },
+    input = { enabled = true },
 
-		scope = {
-			enabled = true,
-			cursor = false,
-		},
+    scope = {
+      enabled = true,
+      cursor = false,
+    },
 
-		indent = {
-			enabled = true,
-			indent = { char = "┊" },
-			scope = { char = "┊" },
-		},
+    indent = {
+      enabled = true,
+      indent = { char = "┊" },
+      scope = { char = "┊" },
+    },
 
-		-- notifier = {
-		-- 	enabled = true,
-		-- 	timeout = 4500,
-		-- 	top_down = false,
-		-- 	width = { min = 0, max = 0 },
-		-- 	height = { min = 1, max = 1 },
-		-- 	margin = { top = 0, right = 0, bottom = 0 },
-		-- 	style = "minimal",
-		-- },
+    -- notifier = {
+    -- 	enabled = true,
+    -- 	timeout = 4500,
+    -- 	top_down = false,
+    -- 	width = { min = 0, max = 0 },
+    -- 	height = { min = 1, max = 1 },
+    -- 	margin = { top = 0, right = 0, bottom = 0 },
+    -- 	style = "minimal",
+    -- },
 
-		notifier = {
-			enabled = true,
-			timeout = 4500,
-			width = { min = 40, max = 0.5 },
-			margin = { top = 0, right = 0, bottom = 0 },
-			style = "compact",
-		},
+    notifier = {
+      enabled = true,
+      timeout = 4500,
+      width = { min = 40, max = 0.5 },
+      margin = { top = 0, right = 0, bottom = 0 },
+      style = "compact",
+    },
 
-		picker = {
-			prompt = "  ",
-			layout = {
-				cycle = true,
-				preset = "ivy_split",
-			},
-			matcher = {
-				-- These might have performance impact so they're not enabled by default
-				history_bonus = true,
-				cwd_bonus = true,
-				frecency = true,
-			},
-			formatters = {
-				file = { icon_width = 3 },
-			},
-		},
+    picker = {
+      prompt = "  ",
+      layout = {
+        cycle = true,
+        preset = "ivy_split",
+      },
+      matcher = {
+        -- These might have performance impact so they're not enabled by default
+        history_bonus = true,
+        cwd_bonus = true,
+        frecency = true,
+      },
+      formatters = {
+        file = { icon_width = 3 },
+      },
+    },
 
-		dashboard = {
-			preset = {
-				header = [[
+    dashboard = {
+      preset = {
+        header = [[
                                                                     
       ████ ██████           █████      ██                     
      ███████████             █████                             
@@ -67,27 +67,27 @@ return {
    █████████ ██████████ █████████ █████ █████ ████ █████   
  ███████████ ███    ███ █████████ █████ █████ ████ █████  
 ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
-			},
-			sections = {
-				{ section = "header", padding = 1 },
-				{ section = "startup", padding = 3 },
-				{ section = "keys", gap = 1 },
-			},
-		},
+      },
+      sections = {
+        { section = "header", padding = 1 },
+        { section = "startup", padding = 3 },
+        { section = "keys", gap = 1 },
+      },
+    },
 
-		styles = {
-			notification = {
-				wo = {
-					wrap = true,
-					linebreak = true,
-				},
-			},
-			lazygit = {
-				height = 0,
-				width = 0,
-			},
-		},
-	},
+    styles = {
+      notification = {
+        wo = {
+          wrap = true,
+          linebreak = true,
+        },
+      },
+      lazygit = {
+        height = 0,
+        width = 0,
+      },
+    },
+  },
 
   -- stylua: ignore
 	keys = {
@@ -110,33 +110,33 @@ return {
 		{"<C-/>", function() Snacks.terminal.toggle() end, desc = "Toggle Terminal", mode = { "n", "t" },},
 		{"<c-_>", function() Snacks.terminal.toggle() end, desc = "which_key_ignore", mode = { "n", "t" },},
 	},
-	init = function()
-		-- Recommended settings
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "VeryLazy",
-			callback = function()
-				-- Setup some globals for debugging (lazy-loaded)
-				_G.dd = function(...)
-					Snacks.debug.inspect(...)
-				end
-				_G.bt = function()
-					Snacks.debug.backtrace()
-				end
-				vim.print = _G.dd -- Override print to use snacks for `:=` command
+  init = function()
+    -- Recommended settings
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "VeryLazy",
+      callback = function()
+        -- Setup some globals for debugging (lazy-loaded)
+        _G.dd = function(...)
+          Snacks.debug.inspect(...)
+        end
+        _G.bt = function()
+          Snacks.debug.backtrace()
+        end
+        vim.print = _G.dd -- Override print to use snacks for `:=` command
 
-				Snacks.toggle.diagnostics():map("<leader>dt")
-				Snacks.toggle.inlay_hints():map("<leader>dh")
-			end,
-		})
+        Snacks.toggle.diagnostics():map("<leader>dt")
+        Snacks.toggle.inlay_hints():map("<leader>dh")
+      end,
+    })
 
-		-- Oil integration
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "OilActionsPost",
-			callback = function(event)
-				if event.data.actions.type == "move" then
-					Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
-				end
-			end,
-		})
-	end,
+    -- Oil integration
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "OilActionsPost",
+      callback = function(event)
+        if event.data.actions.type == "move" then
+          Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
+        end
+      end,
+    })
+  end,
 }

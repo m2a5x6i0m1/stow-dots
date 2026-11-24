@@ -1,112 +1,112 @@
 return {
-	"obsidian-nvim/obsidian.nvim",
-	event = "VeryLazy",
-	config = function()
-		require("obsidian").setup({
+  "obsidian-nvim/obsidian.nvim",
+  event = "VeryLazy",
+  config = function()
+    require("obsidian").setup({
 
-			note_id_func = function(title)
-				return title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-			end,
+      note_id_func = function(title)
+        return title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+      end,
 
-			frontmatter = {
-				enabled = true,
-				func = function(note)
-					local out = {
-						date = "[[" .. os.date("%Y-%m-%d") .. "]]",
-						type = "",
-						tags = note.tags,
-					}
-					if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-						for k, v in pairs(note.metadata) do
-							if v ~= note.aliases and v ~= note.id then
-								out[k] = v
-							end
-						end
-					end
-					return out
-				end,
-				sort = { "date", "type", "tags" },
-			},
+      frontmatter = {
+        enabled = true,
+        func = function(note)
+          local out = {
+            date = "[[" .. os.date("%Y-%m-%d") .. "]]",
+            type = "",
+            tags = note.tags,
+          }
+          if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+            for k, v in pairs(note.metadata) do
+              if v ~= note.aliases and v ~= note.id then
+                out[k] = v
+              end
+            end
+          end
+          return out
+        end,
+        sort = { "date", "type", "tags" },
+      },
 
-			daily_notes = {
-				enabled = true,
-				folder = "daily-notes",
-				default_tags = {},
-			},
+      daily_notes = {
+        enabled = true,
+        folder = "daily-notes",
+        default_tags = {},
+      },
 
-			templates = {
-				enabled = true,
-				folder = "templates",
-			},
+      templates = {
+        enabled = true,
+        folder = "templates",
+      },
 
-			link = {
-				auto_update = true,
-			},
+      link = {
+        auto_update = true,
+      },
 
-			backlinks = {
-				parse_headers = false,
-			},
+      backlinks = {
+        parse_headers = false,
+      },
 
-			checkbox = {
-				create_new = false,
-				order = { " ", "x" },
-			},
+      checkbox = {
+        create_new = false,
+        order = { " ", "x" },
+      },
 
-			workspaces = {
-				{
-					name = "personal",
-					path = "~/notes",
-				},
-			},
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/notes",
+        },
+      },
 
-			completion = { min_chars = 0 },
-			picker = { name = "snacks.picker" },
-			footer = { enabled = false },
-			ui = { enable = false },
-			slides = { enabled = false },
-			unigue_note = { enabled = false },
-			legacy_commands = false,
-		})
+      completion = { min_chars = 0 },
+      picker = { name = "snacks.picker" },
+      footer = { enabled = false },
+      ui = { enable = false },
+      slides = { enabled = false },
+      unigue_note = { enabled = false },
+      legacy_commands = false,
+    })
 
-		-- Remove keymap that conflicts with mini.bracketed
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "ObsidianNoteEnter",
-			callback = function(ev)
-				vim.keymap.del("n", "[o", { buffer = ev.buf })
-				vim.keymap.del("n", "]o", { buffer = ev.buf })
-			end,
-		})
+    -- Remove keymap that conflicts with mini.bracketed
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "ObsidianNoteEnter",
+      callback = function(ev)
+        vim.keymap.del("n", "[o", { buffer = ev.buf })
+        vim.keymap.del("n", "]o", { buffer = ev.buf })
+      end,
+    })
 
-		-- Folding based on obsidian.nvim obsidian-ls implementation
-		vim.api.nvim_create_autocmd("LspAttach", {
-			callback = function(ev)
-				local client = vim.lsp.get_client_by_id(ev.data.client_id)
-				if not (client and client.name == "obsidian-ls") then
-					return
-				end
+    -- Folding based on obsidian.nvim obsidian-ls implementation
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if not (client and client.name == "obsidian-ls") then
+          return
+        end
 
-				for _, win in ipairs(vim.fn.win_findbuf(ev.buf)) do
-					vim.wo[win][0].foldlevel = 99
-					vim.wo[win][0].foldmethod = "expr"
-					vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-					vim.wo[win][0].foldtext = "v:lua.vim.lsp.foldtext()"
-				end
-			end,
-		})
+        for _, win in ipairs(vim.fn.win_findbuf(ev.buf)) do
+          vim.wo[win][0].foldlevel = 99
+          vim.wo[win][0].foldmethod = "expr"
+          vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+          vim.wo[win][0].foldtext = "v:lua.vim.lsp.foldtext()"
+        end
+      end,
+    })
 
     -- stylua: ignore
 		vim.keymap.set("n", "<leader>nf", function()Snacks.picker.files({ cwd = "~/notes" })end, { desc = "Find" })
     -- stylua: ignore
 		vim.keymap.set("n", "<leader>ng", function()Snacks.picker.grep({ cwd = "~/notes" })end, { desc = "Grep" })
 
-		vim.keymap.set("n", "<leader>nn", "<cmd>Obsidian new<cr>", { desc = "New" })
-		vim.keymap.set("n", "<leader>nr", "<cmd>Obsidian rename<cr>", { desc = "Rename" })
-		vim.keymap.set("n", "<leader>nd", "<cmd>Obsidian today<cr>", { desc = "Daily" })
+    vim.keymap.set("n", "<leader>nn", "<cmd>Obsidian new<cr>", { desc = "New" })
+    vim.keymap.set("n", "<leader>nr", "<cmd>Obsidian rename<cr>", { desc = "Rename" })
+    vim.keymap.set("n", "<leader>nd", "<cmd>Obsidian today<cr>", { desc = "Daily" })
 
-		-- vim.keymap.set("n", "<leader>nN", "<cmd>Obsidian new_from_template<cr>", { desc = "New from template" })
+    -- vim.keymap.set("n", "<leader>nN", "<cmd>Obsidian new_from_template<cr>", { desc = "New from template" })
 
-		-- vim.keymap.set("n", "<leader>nb", "<cmd>Obsidian backlinks<cr>", { desc = "Backlinks" })
-		-- vim.keymap.set("n", "<leader>nl", "<cmd>Obsidian links<cr>", { desc = "Outgoing links" })
-		-- vim.keymap.set("n", "<leader>nt", "<cmd>Obsidian tags<cr>", { desc = "Tags" })
-	end,
+    -- vim.keymap.set("n", "<leader>nb", "<cmd>Obsidian backlinks<cr>", { desc = "Backlinks" })
+    -- vim.keymap.set("n", "<leader>nl", "<cmd>Obsidian links<cr>", { desc = "Outgoing links" })
+    -- vim.keymap.set("n", "<leader>nt", "<cmd>Obsidian tags<cr>", { desc = "Tags" })
+  end,
 }
